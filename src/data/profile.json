@@ -1,0 +1,96 @@
+{
+  "name": "中林 拓海",
+  "nameEn": "Takumi Nakabayashi",
+  "role": "バックエンドエンジニア／PM",
+  "tagline": "仕様と人の間を丁寧につなぎ、設計から運用まで一貫して担います。",
+  "summary": [
+    "2016年からフリーランスのエンジニアとして、Webサービスや業務システムのバックエンド開発を中心に、要件整理・設計・実装・テスト・保守運用まで幅広く担当してきました。数名〜十数名規模のチームで、既存システムの改善や新機能の追加、基盤まわりの整備に携わっています。",
+    "直近の2〜3年は PM・PL として、進捗と品質の管理、メンバーのリード、顧客との調整も担っています。AIコーディングツールを開発に取り入れ、生成コードのレビューとテストの整備で、品質を保ちながら開発を速める取り組みも続けています。"
+  ],
+  "status": "フルリモートで、基盤に近い領域のバックエンド開発に携われるお仕事を探しています。",
+  "links": [],
+  "contact": {
+    "email": "n.b.takumi@outlook.com",
+    "formUrl": "",
+    "note": "お仕事のご相談は、メールでお送りください。"
+  },
+  "strengths": [
+    {
+      "title": "言葉の外側を読み、手戻りを減らす",
+      "body": "同じ言葉でも、前提や意図は人によって違います。開発では、仕様の食い違いを実装前に確認する進め方を大切にしています。直近の PM 案件（6〜7名）では、アプリ・管理画面・API の間で認識がずれやすい箇所を、実装に入る前に画面と文章で突き合わせ、手戻りを抑えました。"
+    },
+    {
+      "title": "設計から運用まで一貫して担える技術の幅",
+      "body": "PHP・Ruby・Python・Go・TypeScript など複数の言語と、AWS・GCP・オンプレミスの環境を経験してきたので、課題に合わせて技術を選べます。基盤に近い領域に関心があり、土台から理解したうえでプロダクトの成長に長く関わりたいと考えています。"
+    },
+    {
+      "title": "AIを安全に使うチームづくり",
+      "body": "OpenAI／Gemini API を使った画像審査・自然言語検索の開発に携わり、日頃から AI コーディングツールも設計・実装・テストに使っています。生成コードをそのまま信じず、レビューとテストで品質を保つ仕組みを、チームで回せる形にすることに関心があります。"
+    }
+  ],
+  "skills": [
+    {
+      "category": "言語",
+      "items": [
+        { "name": "PHP（Laravel）", "years": 10 },
+        { "name": "TypeScript／JavaScript", "years": 10 },
+        { "name": "SQL", "years": 10 },
+        { "name": "HTML／CSS", "years": 10 },
+        { "name": "Python", "years": 6 },
+        { "name": "Ruby", "years": 6 },
+        { "name": "Java", "years": 6 },
+        { "name": "Go", "years": 5 }
+      ]
+    },
+    {
+      "category": "フレームワーク",
+      "items": [
+        { "name": "React／Next.js", "years": 10 },
+        { "name": "Vue.js", "years": 8 },
+        { "name": "Node.js（Fastify・NestJS）", "years": 8 },
+        { "name": "Ruby on Rails", "years": 6 },
+        { "name": "FastAPI・Django", "years": 6 },
+        { "name": "Expo（React Native）", "years": 2 }
+      ]
+    },
+    {
+      "category": "データベース",
+      "items": [
+        { "name": "MySQL／MariaDB", "years": 10 },
+        { "name": "PostgreSQL", "years": 5 },
+        { "name": "MongoDB", "years": 3 },
+        { "name": "Redis", "years": 3 }
+      ]
+    },
+    {
+      "category": "インフラ・運用",
+      "items": [
+        { "name": "Linux", "years": 10 },
+        { "name": "Docker／GitHub Actions", "years": 9 },
+        { "name": "AWS", "years": 8 },
+        { "name": "GCP", "years": 4 },
+        { "name": "Firebase", "years": 4 }
+      ]
+    },
+    {
+      "category": "AI",
+      "items": [
+        { "name": "OpenAI／Gemini API", "years": 3 },
+        { "name": "AIコーディングツール", "years": 2 }
+      ]
+    }
+  ],
+  "career": [
+    {
+      "start": "2016-04",
+      "end": "",
+      "title": "フリーランスエンジニア",
+      "org": "個人事業主",
+      "description": "Webシステム開発の受託。フロントエンド・バックエンド・インフラに加え、直近は PM・PL として要件定義、進捗・品質管理、技術リード、顧客調整、メンバー育成を担当。"
+    }
+  ],
+  "certifications": [
+    { "name": "応用情報技術者試験", "year": "2017" },
+    { "name": "基本情報技術者試験", "year": "2015" }
+  ]
+}

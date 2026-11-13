@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CareerTimeline from '../components/CareerTimeline.astro';
+import SkillList from '../components/SkillList.astro';
+import profile from '../data/profile.json';
+---
+
+<BaseLayout title="経歴・スキル" description={`${profile.name}の経歴とスキルです。`}>
+  <div class="wrap page">
+    <header class="head">
+      <h1>経歴・スキル</h1>
+      <div class="summary">
+        {profile.summary.map((p) => <p>{p}</p>)}
+      </div>
+    </header>
+
+    <section aria-labelledby="strengths-title" class="block">
+      <h2 id="strengths-title" class="section-title">強み</h2>
+      <ul class="strengths">
+        {
+          profile.strengths.map((st) => (
+            <li>
+              <h3>{st.title}</h3>
+              <p>{st.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section aria-labelledby="career-title" class="block">
+      <h2 id="career-title" class="section-title">経歴</h2>
+      <CareerTimeline />
+    </section>
+
+    <section aria-labelledby="skills-title" class="block">
+      <h2 id="skills-title" class="section-title">スキル</h2>
+      <p class="hint">数字は実務での使用年数です。</p>
+      <SkillList />
+    </section>
+
+    {
+      profile.certifications.length > 0 && (
+        <section aria-labelledby="cert-title" class="block">
+          <h2 id="cert-title" class="section-title">資格</h2>
+          <ul class="certs">
+            {profile.certifications.map((c) => (
+              <li>
+                <span>{c.name}</span>
+                <span class="year">{c.year}年取得</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </div>
+</BaseLayout>
+
+<style>
+  .page {
+    padding-top: clamp(2.5rem, 6vw, 4.5rem);
+    display: grid;
+    gap: clamp(3rem, 7vw, 4.5rem);
+  }
+  .head {
+    display: grid;
+    gap: 1.25rem;
+    max-width: var(--measure);
+  }
+  h1 {
+    font-size: var(--step-3);
+  }
+  .summary {
+    display: grid;
+    gap: 0.75rem;
+  }
+  .block {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .strengths {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: 1.25rem;
+  }
+  .strengths li {
+    display: grid;
+    align-content: start;
+    gap: 0.6rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--accent);
+    border-radius: var(--radius);
+  }
+  .strengths h3 {
+    font-size: var(--step-1);
+    line-height: 1.5;
+  }
+  .strengths p {
+    font-size: 0.9375rem;
+    color: var(--muted);
+  }
+  .hint {
+    color: var(--muted);
+    font-size: 0.9375rem;
+    margin-top: -0.75rem;
+  }
+  .certs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-width: var(--measure);
+  }
+  .certs li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 0.6rem;
+    border-bottom: 1px dashed var(--line);
+  }
+  .year {
+    color: var(--muted);
+    font-size: var(--step--1);
+    white-space: nowrap;
+  }
+</style>

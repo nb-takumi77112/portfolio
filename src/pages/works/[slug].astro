@@ -1,0 +1,175 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Thumbnail from '../../components/Thumbnail.astro';
+import { getWorks, formatPeriod, type Work } from '../../lib/works';
+import { url } from '../../lib/url';
+
+export async function getStaticPaths() {
+  const works = await getWorks();
+  return works.map((work, i) => ({
+    params: { slug: work.id },
+    props: { work, prev: works[i - 1], next: works[i + 1] },
+  }));
+}
+
+interface Props {
+  work: Work;
+  prev?: Work;
+  next?: Work;
+}
+
+const { work, prev, next } = Astro.props;
+const { Content } = await render(work);
+const d = work.data;
+---
+
+<BaseLayout title={d.title} description={d.summary}>
+  <article class="wrap page">
+    <p class="back"><a href={url('works')}>実績一覧へ戻る</a></p>
+
+    <header class="head">
+      <h1>{d.title}</h1>
+      <p class="lead">{d.summary}</p>
+    </header>
+
+    <div class="cover">
+      <Thumbnail
+        src={d.thumbnail}
+        alt={d.thumbnailAlt}
+        category={d.category}
+        sizes="(max-width: 72rem) 100vw, 1100px"
+        loading="eager"
+      />
+    </div>
+
+    <dl class="facts">
+      <div><dt>期間</dt><dd>{formatPeriod(d.start, d.end)}</dd></div>
+      <div><dt>業界</dt><dd>{d.domain}</dd></div>
+      <div><dt>役割</dt><dd>{d.role}</dd></div>
+      {d.teamSize && <div><dt>体制</dt><dd>{d.teamSize}名</dd></div>}
+      <div class="wide">
+        <dt>使用技術</dt>
+        <dd><ul class="tags">{d.tech.map((t) => <li>{t}</li>)}</ul></dd>
+      </div>
+      {
+        d.links.length > 0 && (
+          <div class="wide">
+            <dt>リンク</dt>
+            <dd>
+              {d.links.map((l) => (
+                <a href={l.url} target="_blank" rel="noopener">
+                  {l.label}
+                </a>
+              ))}
+            </dd>
+          </div>
+        )
+      }
+    </dl>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <nav class="pager" aria-label="前後の実績">
+      {prev ? <a class="prev" href={url(`works/${prev.id}`)}><span>前の実績</span>{prev.data.title}</a> : <span />}
+      {next && <a class="next" href={url(`works/${next.id}`)}><span>次の実績</span>{next.data.title}</a>}
+    </nav>
+  </article>
+</BaseLayout>
+
+<style>
+  .page {
+    padding-top: clamp(2rem, 5vw, 3.5rem);
+    display: grid;
+    gap: 2rem;
+  }
+  .back {
+    font-size: 0.9375rem;
+  }
+  .head {
+    display: grid;
+    gap: 1rem;
+    max-width: var(--measure);
+  }
+  h1 {
+    font-size: var(--step-4);
+  }
+  .lead {
+    font-size: var(--step-1);
+    line-height: 1.7;
+    color: var(--muted);
+  }
+  .cover {
+    max-width: 52rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .facts {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 1px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  /* 区切り線は項目がある所だけに引く（余ったマスは地の色のまま） */
+  .facts > div {
+    padding: 0.9rem 1.1rem;
+    box-shadow: 1px 1px 0 var(--line);
+  }
+  .facts .wide {
+    grid-column: 1 / -1;
+  }
+  dt {
+    font-size: var(--step--1);
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+  }
+  dd {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+  }
+  .pager {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .pager a {
+    display: grid;
+    gap: 0.2rem;
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .pager a:hover {
+    color: var(--accent);
+  }
+  .pager span {
+    font-size: var(--step--1);
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .next {
+    text-align: right;
+    grid-column: 2;
+  }
+  @media (max-width: 40rem) {
+    .pager {
+      grid-template-columns: 1fr;
+    }
+    .next {
+      grid-column: 1;
+      text-align: left;
+    }
+  }
+</style>

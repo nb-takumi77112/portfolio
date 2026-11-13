@@ -1,0 +1,25 @@
+# 依存パッケージ（npm install で復元できる）
+node_modules/
+
+# ビルド結果（GitHub Actions がビルドして公開する）
+dist/
+
+# Astro が自動で作るキャッシュ・型定義
+.astro/
+
+# 環境変数（秘密情報を入れることがある）
+.env
+.env.*
+
+# OS・エディタが作るファイル
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ログ
+npm-debug.log*
+*.log
+
+# 公開前の下書き置き場（GitHub には上げない）
+drafts/

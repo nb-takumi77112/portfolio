@@ -1,0 +1,45 @@
+---
+import profile from '../data/profile.json';
+const year = new Date().getFullYear();
+// links が空配列でも型が付くようにする
+const links = profile.links as { label: string; url: string }[];
+---
+
+<footer class="site-footer">
+  <div class="wrap inner">
+    <p>© {year} {profile.nameEn}</p>
+    <ul>
+      {links.map((l) => <li><a href={l.url} rel="me noopener" target="_blank">{l.label}</a></li>)}
+    </ul>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--line);
+    margin-top: 6rem;
+    color: var(--muted);
+    font-size: var(--step--1);
+  }
+  .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-block: 2rem;
+  }
+  ul {
+    display: flex;
+    gap: 1.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  a {
+    color: var(--muted);
+  }
+  a:hover {
+    color: var(--ink);
+  }
+</style>

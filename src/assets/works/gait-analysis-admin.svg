@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500"><defs><pattern id="d" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#24344F"/></pattern></defs><rect width="800" height="500" fill="#111C2E"/><rect width="800" height="500" fill="url(#d)"/>
+<rect x="56" y="60" width="300" height="380" rx="16" fill="#1B2A44" stroke="#2C3F5E" stroke-width="2"/>
+<rect x="76" y="80" width="260" height="300" rx="10" fill="#0F1A2B"/>
+<g fill="none" stroke="#E6EDF7" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="206" cy="128" r="20" fill="#E6EDF7"/>
+<path d="M206 152 L200 240"/><path d="M204 170 L172 214 L160 250"/><path d="M204 170 L238 206 L262 228"/>
+<path d="M200 240 L170 296 L132 332"/><path d="M200 240 L236 290 L250 346"/>
+</g>
+<g fill="#38BDF8" stroke="#0F1A2B" stroke-width="3"><circle cx="200" cy="240" r="9"/><circle cx="170" cy="296" r="9"/><circle cx="236" cy="290" r="9"/><circle cx="204" cy="170" r="9"/></g>
+<path d="M200 240 L236 290" stroke="#38BDF8" stroke-width="3"/>
+<path d="M218 252 A24 24 0 0 1 222 268" fill="none" stroke="#F59E0B" stroke-width="4"/>
+<rect x="76" y="398" width="260" height="6" rx="3" fill="#2C3F5E"/><rect x="76" y="398" width="150" height="6" rx="3" fill="#38BDF8"/><circle cx="226" cy="401" r="10" fill="#E6EDF7"/>
+<rect x="386" y="60" width="356" height="380" rx="16" fill="#152238" stroke="#2C3F5E" stroke-width="2"/>
+<g stroke="#24344F" stroke-width="2"><path d="M416 120 H712 M416 190 H712 M416 260 H712 M416 330 H712 M416 400 H712"/></g>
+<path d="M416 300 C450 200 480 180 520 230 S580 340 620 250 S680 150 712 200" fill="none" stroke="#38BDF8" stroke-width="5" stroke-linecap="round"/>
+<path d="M416 340 C450 290 490 280 520 300 S580 360 620 320 S680 260 712 290" fill="none" stroke="#34D399" stroke-width="4" stroke-linecap="round" stroke-opacity="0.8"/>
+<path d="M416 370 C460 350 500 330 540 350 S620 390 712 360" fill="none" stroke="#8FA3BF" stroke-width="3" stroke-dasharray="8 8"/>
+<rect x="566" y="96" width="4" height="320" fill="#F59E0B"/><circle cx="568" cy="290" r="8" fill="#F59E0B"/>
+<g fill="#8FA3BF" fill-opacity="0.6"><rect x="416" y="84" width="100" height="10" rx="5"/></g>
+</svg>

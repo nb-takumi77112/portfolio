@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import WorkList from '../../components/WorkList.astro';
+import { getWorks } from '../../lib/works';
+
+const works = await getWorks();
+const categories = [...new Set(works.map((w) => w.data.category))];
+---
+
+<BaseLayout title="実績" description="これまでに担当した開発案件の一覧です。">
+  <div class="wrap page">
+    <header class="page-head">
+      <h1>実績</h1>
+      <p>これまでに担当した案件です。社名は伏せ、業界と担当範囲で記載しています。</p>
+    </header>
+
+    {
+      categories.length > 1 && (
+        <div class="filter" role="group" aria-label="分類で絞り込む">
+          <button type="button" data-filter="" aria-pressed="true">
+            すべて
+          </button>
+          {categories.map((c) => (
+            <button type="button" data-filter={c} aria-pressed="false">
+              {c}
+            </button>
+          ))}
+        </div>
+      )
+    }
+
+    <WorkList works={works} headingLevel="h2" />
+    <p class="empty" hidden>この分類の実績はまだありません。</p>
+  </div>
+</BaseLayout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+  const items = document.querySelectorAll<HTMLElement>('.work');
+  const empty = document.querySelector<HTMLElement>('.empty');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const value = btn.dataset.filter ?? '';
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      let shown = 0;
+      items.forEach((item) => {
+        const match = !value || item.dataset.category === value;
+        item.hidden = !match;
+        if (match) shown++;
+      });
+      if (empty) empty.hidden = shown > 0;
+    });
+  });
+</script>
+
+<style>
+  .page {
+    padding-top: clamp(2.5rem, 6vw, 4.5rem);
+    display: grid;
+    gap: 2rem;
+  }
+  .page-head {
+    display: grid;
+    gap: 0.75rem;
+    max-width: var(--measure);
+  }
+  h1 {
+    font-size: var(--step-3);
+  }
+  .page-head p {
+    color: var(--muted);
+  }
+  .filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .filter button {
+    font: inherit;
+    font-size: 0.9375rem;
+    padding: 0.35em 1em;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .filter button:hover {
+    border-color: var(--accent);
+  }
+  .filter button[aria-pressed='true'] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-ink);
+  }
+  .empty {
+    color: var(--muted);
+  }
+</style>

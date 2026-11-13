@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { url } from '../lib/url';
+---
+
+<BaseLayout title="ページが見つかりません">
+  <div class="wrap page">
+    <h1>ページが見つかりません</h1>
+    <p>URL が変わったか、ページが削除された可能性があります。</p>
+    <p><a href={url()}>トップページへ戻る</a></p>
+  </div>
+</BaseLayout>
+
+<style>
+  .page {
+    padding-top: clamp(3rem, 8vw, 6rem);
+    display: grid;
+    gap: 1rem;
+  }
+  h1 {
+    font-size: var(--step-3);
+  }
+</style>

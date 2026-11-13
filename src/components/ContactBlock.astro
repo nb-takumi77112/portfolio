@@ -1,0 +1,41 @@
+---
+import profile from '../data/profile.json';
+const { email, formUrl, note } = profile.contact;
+---
+
+<div class="contact">
+  <p class="note">{note}</p>
+  <p class="status">{profile.status}</p>
+  <div class="actions">
+    {formUrl && <a class="button button--primary" href={formUrl}>フォームから問い合わせる</a>}
+    {email && (
+      <a class={`button ${formUrl ? 'button--ghost' : 'button--primary'}`} href={`mailto:${email}`}>
+        メールを送る
+      </a>
+    )}
+  </div>
+  {email && <p class="address">{email}</p>}
+</div>
+
+<style>
+  .contact {
+    display: grid;
+    gap: 1rem;
+    max-width: var(--measure);
+  }
+  .status {
+    padding: 0.75rem 1rem;
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+  }
+  .actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+  .address {
+    font-size: var(--step--1);
+    color: var(--muted);
+  }
+</style>
