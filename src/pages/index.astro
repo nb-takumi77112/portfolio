@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WorkList from '../components/WorkList.astro';
+import AboutSections from '../components/AboutSections.astro';
 import ContactBlock from '../components/ContactBlock.astro';
 import profile from '../data/profile.json';
 import { getWorks } from '../lib/works';
@@ -51,6 +52,11 @@ const nameChars = Array.from(profile.name);
       </div>
     </div>
   </section>
+  </div>
+
+  <!-- 強み・経歴・スキル・資格（「経歴・スキル」ページと同じ内容） -->
+  <div class="wrap block">
+    <AboutSections />
   </div>
 
   <section class="wrap block" aria-labelledby="works-title">
